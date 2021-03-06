@@ -1,7 +1,7 @@
 # Hibar_Portfolio
 Data science portfolio
 
-## Project 1: Titanic[[Kaggle](kaggle.com)]
+## Project 1: Titanic [[Kaggle](kaggle.com)]
 Overview:
 1. Membuat model machine learning yang memprediksi penumpang dengan karakteristik seperti apa yang selamat dalam kecelakaan kapal Titanic. 
 2. Data yang disediakan yaitu data train dan data test
