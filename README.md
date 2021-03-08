@@ -26,5 +26,6 @@ Overview:
    - Create Machine Learning Model
    - Model Evaluation
    - Predict Test Data
+   
    Tahapan di atas merupakan acuan yang digunakan untuk membuat model Machine Learning, tahapan tidak baku, dapat disesuaikan berdasarkan karakteristik data dan studi kasus
  4. Project berasal dari Tugas Besar Bootcamp 'Waroenk Skill #3 - Python Data Science 101', menggunakan dataset 'Titanic - Machine Learning from Disaster'. Untuk lebih lengkapnya, dataset tersebut bisa diakses [disini](https://www.kaggle.com/c/waroenk-skill-3-competition). Untuk informasi seputar Wareonk Skill dapat diakses [disini](https://waroenkskill.id/).
