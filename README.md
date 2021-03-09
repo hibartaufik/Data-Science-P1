@@ -1,7 +1,7 @@
 # Hibar_Portfolio
 Data science portfolio
 
-## [Project 1: Stroke Prediction](https://github.com/hibartaufik/Stroke-Prediction) [[Waroenk Skill Bootcamp Competition on Kaggle](https://www.kaggle.com/c/waroenk-skill-3-competition)]
+## [Project 1: Stroke Prediction](https://github.com/hibartaufik/Stroke-Prediction) [Waroenk Skill Bootcamp Competition on Kaggle]
 Overview:
 1. Membuat model machine learning yang memprediksi pengidap stroke berdasarkan data yang ada 
 2. Data yang disediakan yaitu data train dan data test
