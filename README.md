@@ -89,11 +89,51 @@ Menganalisa karakteristik data dengan fungsi head(), info(), describe(), shape, 
    ![image](https://user-images.githubusercontent.com/74480780/110504983-4b7f9d80-8130-11eb-9831-b167e9765443.png)
    
 5. Melihat apa ada data yang kosong pada setiap kolom
+   ```
+   train.isnull().sum() 
+   ```
+   ![image](https://user-images.githubusercontent.com/74480780/110505283-97324700-8130-11eb-87e8-4b25d4f5becf.png)
+   
 6. Melihat urutan pasien berdasarkan umur
+   ```
+   train.sort_values('umur', ascending=False)
+   ```
+   ![image](https://user-images.githubusercontent.com/74480780/110505485-c779e580-8130-11eb-9c4d-426944e96c13.png)
+
 7. Melihat jumlah pasien berdasarkan gender dengan visualisasi bar plot
+   ```
+   plt.style.use('ggplot')
+   fg, ax = plt.subplots(figsize=(12,6))
+   sns.countplot(x=train['jenis_kelamin'])
+   plt.title("JUMLAH PASIEN BERDASARKAN GENDER", pad=20, fontsize=20, fontweight='bold')
+   plt.xlabel("Gender", fontsize=14)
+   plt.ylabel("Jumlah Pasien", fontsize=14)
+   plt.show()
+   ```
+   ![image](https://user-images.githubusercontent.com/74480780/110505687-fabc7480-8130-11eb-8717-4c0baf877307.png)
+   
 8. Melihat hubungan/korelasi antar feature pada dataset
+   ```
+   train.corr()
+   ```
+   ![image](https://user-images.githubusercontent.com/74480780/110505841-1e7fba80-8131-11eb-840f-3d48fc146ab9.png)
+   
 9. Melihat hubungan/korelasi antar feature dengan visualisasi heatmap
+   ```
+   plt.style.use('ggplot')
+   fg, ax = plt.subplots(figsize=(14,6))
+   mask = np.triu(train.corr())
+   sns.heatmap(train.corr(), cmap='Reds', mask=mask, annot=True, linewidths=2)
+   plt.title('KORELASI TIAP FEATURE', pad=20, fontsize=20, fontweight='bold')
+   plt.show()
+   ```
+   ![image](https://user-images.githubusercontent.com/74480780/110506005-496a0e80-8131-11eb-8d15-2500c8ff8db1.png)
+   
 10. Melihat jumlah data pada data feature yang akan diprediksi (target/label)
+   ```
+   train['stroke'].value_counts()
+   ```
+   ![image](https://user-images.githubusercontent.com/74480780/110506191-74546280-8131-11eb-8c61-cd2828095246.png)
 
 
 
