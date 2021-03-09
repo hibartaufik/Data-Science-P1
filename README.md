@@ -62,7 +62,7 @@ Overview:
    ![image](https://user-images.githubusercontent.com/74480780/110502864-2be77580-812e-11eb-9610-75421c2053f4.png)
 
 ### b. Exploratory Data Analysis (EDA)
-Mengetahui dengan menganalisa karakteristik data dengan fungsi head(), info(), describe(), shape, dan beberapa perintah lainnya agar menemukan insight yang dapat berguna dalam pengolahan data dan perancangan model machine learning. Lalu, mencatat segala macam penemuan pada dataset seperti data yang kosong, tidak lengkap, redundant, atau data yang perlu pengolahan lebih lanjut. Hal-hal yang sudah dicatat tersebut akan diolah dan dieksekusi pada tahapan Data Preprocessing.
+Menganalisa karakteristik data dengan fungsi head(), info(), describe(), shape, dan beberapa perintah lainnya agar menemukan insight yang dapat berguna dalam pengolahan data dan perancangan model machine learning. Lalu, mencatat segala macam penemuan pada dataset seperti data yang kosong, tidak lengkap, redundant, atau data yang perlu pengolahan lebih lanjut. Hal-hal yang sudah dicatat tersebut akan diolah dan dieksekusi pada tahapan Data Preprocessing.
 1. Cek 5 data teratas
 
    ```
@@ -80,13 +80,14 @@ Mengetahui dengan menganalisa karakteristik data dengan fungsi head(), info(), d
    ```
    train.describe(include='all').T
    ```
-   ![image](https://user-images.githubusercontent.com/74480780/110501946-4a00a600-812d-11eb-8ad1-f25041475a02.png)
+   ![image](https://user-images.githubusercontent.com/74480780/110504913-386ccd80-8130-11eb-8442-0e9ac9f5813d.png)
 
 4. Cek bentuk dimensi dari dataset
    ```
    train.shape
    ```
-    
+   ![image](https://user-images.githubusercontent.com/74480780/110504983-4b7f9d80-8130-11eb-9831-b167e9765443.png)
+   
 5. Melihat apa ada data yang kosong pada setiap kolom
 6. Melihat urutan pasien berdasarkan umur
 7. Melihat jumlah pasien berdasarkan gender dengan visualisasi bar plot
