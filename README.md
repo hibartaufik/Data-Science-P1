@@ -153,7 +153,7 @@ positif = train.loc[train['stroke'] == 1]
 print(f"Jumlah Data Negatif:\t{len(negatif)}")
 print(f"Jumlah Data Positif:\t{len(positif)}")
 ```
-Menyeimbangkan jumlah data dengan menyamakan data negatif dengan data positif karena perbandingan data yang jauh akan lebih baik dilakukan dengan metode Undersampling. Lakukan undersampling dengan menyamakan jumlah data negatif yang jauh lebih banyak dengan jumlah data positif.
+>Menyeimbangkan jumlah data dengan menyamakan data negatif dengan data positif karena perbandingan data yang jauh akan lebih baik dilakukan dengan metode Undersampling. Lakukan undersampling dengan menyamakan jumlah data negatif yang jauh lebih banyak dengan jumlah data positif.
 ```
 negatif = negatif[:len(positif)]
 
@@ -165,20 +165,119 @@ print(f"Jumlah Data Positif:\t{len(positif)}")
 new_data = pd.concat([negatif, positif], ignore_index=True)
 ```
 
-
-
-
-
-
-
-
-
-
 2. Ubah kolom dengan data yang bertipe object/string menjadi tipe data numerik
+Terdapat dua metode untuk mengubah data yang bertipe object/string menjadi tipe data numerik, yaitu Label Encoding dan One Hot Encoding. Label Encoding dilakukan pada data yang memiliki tingkatan atau peringkat, sedangkan One Hot Encoding dilakukan pada data yang tidak memiliki tingkatan apapun. Berdasarkan karakteristik data, metode yang akan digunakan ialah One Hot Encoding karena data yang diubah tipenya tidak memiliki tingkatan atau peringkat. Lakukan metode One Hot Encoding menggunakan fungsi get_dummies pada library pandas.
+```
+#lakukan One Hot Encoding pada data yang sudah diseimbangkan
+new_data = pd.get_dummies(new_data, drop_first=True)
+#lakukan One Hot Encoding pada data yang tidak diseimbangkan
+train = pd.get_dummies(train, drop_first=True)
+#lakukan One Hot Encoding pada data test juga
+test = pd.get_dummies(test, drop_first=True)
+```
+Saat data dicek kembali, terlihat data yang asalnya bertipe object/string sudah berubah menjadi data yang bertipe numerik
+![image](https://user-images.githubusercontent.com/74480780/110509242-7bc93b00-8134-11eb-8fbe-30061c30bb67.png)
 
+### d. Create Machine Learning Model
+Setelah data diolah dan dirasa telah ideal, maka selanjutnya ialah membuat model machine learning dari dataset tersebut. Berdasarkan studi kasus dan karakteristik data target, metode yang akan digunakan adalah klasifikasi dengan Decision Tree. Mengapa klasifikasi? karena tujuan dibuatnya model machine learning ini adalah untuk memprediksi pasien yang positif (1) mengidap stroke dan yang tidak mengidap (0) stroke, artinya model bertujuan untuk mengelompokkan (klasifikasi) pasien ke dalam dua buah golongan, yaitu yang mengidap stroke dan yang tidak mengidap stroke. Dengan begitu, model akan dibuat dengan DecisionTreeClassifier() pada library sklearn.tree.
 
+Terdapat dua buah model machine learning yang akan dibuat. Model pertama adalah model dengan data yang sudah diseimbangkan jumlah datanya, sedangkan model kedua ialah model dengan data yang tidak diseimbangkan. Pada tahap Model Evaluation, kedua model ini akan dibandingkan bagaimana peforma nilai akurasinya untuk memprediksi data target dengan berbagai metode evaluasi.
 
+1. Pisahkan data terlebih dahulu menjadi data feature dan target
+   ```
+   #lakukan pada data yang diseimbangkan (new_data)
+   X = new_data.drop(['id_pasien', 'stroke'], axis=1)
+   y = new_data['stroke']
 
+   #lakukan pada data yang tidak diseimbangkan (train)
+   X_pure = train.drop(['id_pasien', 'stroke'], axis=1)
+   y_pure = train['stroke']
+   ```
+   
+2. Pisahkan data untuk 70% melatih data dan 30% untuk testing
+   ```
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, stratify=y)
+   X2_train, X2_test, y2_train, y2_test = train_test_split(X_pure, y_pure, test_size=0.3, stratify=y_pure)
+   ```
+3. Buat model machine learning dengan Decision Tree
+   ```
+   #buat dan pasangkan model dengan data train yang telah diseimbangkan
+   model_dt = DecisionTreeClassifier().fit(X_train, y_train)
+   #buat dan pasangkan model dengan data train yang tidak diseimbangkan
+   model_dt_pure = DecisionTreeClassifier().fit(X2_train, y2_train)
+   ```
+4. Lakukan pengecekan akurasi dengan fungsi score() 
+   ```
+   #mengecek akurasi model machine learning yang telah dibuat dengan data test
+   
+   #model dengan data yang diseimbangkan
+   score_1 = model_dt.score(X_test, y_test)
+   #model dengan data yang tidak diseimbangkan
+   score_2 = model_dt_pure.score(X_test, y_test)
+   
+   print(f"Akurasi Model 1: {round(score_1 * 100, 2)}%")
+   print(f"Akurasi Model 2: {round(score_2 * 100, 2)}%")
+   ```
+   ![image](https://user-images.githubusercontent.com/74480780/110517891-04000e00-813e-11eb-8942-58390aed82d9.png)
+   
+### e. Model Evaluation
+Selain pengecekan akurasi dengan fungsi score(), dilakukan juga pengecekan dengan menggunakan metric lain dengan fungsi classification_report() pada library sklearn.metrics
+1. Pengecekan akurasi dengan classification_report()
+   ```
+   #melakukan pengecekan peforma dengan classification_report()
+
+   #pengecekan pada model dengan data yang diseimbangkan
+   print("BALANCED DATA")
+   print(classification_report(y_test, model_dt.predict(X_test)))
+   #pengecekan pada model dengan data yang tidak diseimbangkan
+   print("UNBALANCE DATA")
+   print(classification_report(y2_test, model_dt_pure.predict(X2_test)))
+   ```
+   ![image](https://user-images.githubusercontent.com/74480780/110514819-44f62380-813a-11eb-944d-519ff85e4d71.png)
+   Agar lebih jelas, dilakukan juga pengecekan dengan confusion matrix beserta visualisasi dengan heatmap
+2. Pengecekan akurasi dengan confusion_matrix dan visualisasi dengan heatmap
+   - Lakukan pada model machine learning dari data yang di seimbangkan
+   ```
+   plt.style.use('ggplot')
+   fg, ax = plt.subplots(figsize=(12, 6))
+   mx1 = confusion_matrix(y_test, model_dt.predict(X_test))
+   sns.heatmap(mx1, cmap='Reds', annot=True, linewidths=2)
+   plt.title("PENGECEKAN CONFUSION MATRIX", pad=20, fontsize=20, fontweight='bold')
+   plt.show()
+
+   #berdasarkan visualisasi sebelumnya dapat dilihat presentase-nya
+
+   print("Model dengan data yang diseimbangkan")
+   print(f"TRUE POSITIF: {round(mx1[0][0] / (mx1[0][0] + mx1[0][1]) * 100, 2)}%")
+   print(f"TRUE NEGATIF: {round(mx1[1][1] / (mx1[1][1] + mx1[1][0]) * 100, 2)}%")
+   ```
+   ![image](https://user-images.githubusercontent.com/74480780/110515665-31978800-813b-11eb-8fcf-bc6aa142696f.png)
+
+   Berdasarkan visualisasi di atas dapat dilihat bahwa model dengan data yang diseimbangkan memiliki presentase
+   ![image](https://user-images.githubusercontent.com/74480780/110515748-4d9b2980-813b-11eb-95f2-f5343c8dd35e.png)
+   
+   - Lakukan pada model machine learning dari data yang tidak diseimbangkan
+   ```
+   plt.style.use('ggplot')
+   fg, ax = plt.subplots(figsize=(12, 6))
+   mx2 = confusion_matrix(y_test, model_dt_pure.predict(X_test))
+   sns.heatmap(mx2, cmap='Reds', annot=True, linewidths=2)
+   plt.title("PENGECEKAN CONFUSION MATRIX", pad=20, fontsize=20, fontweight='bold')
+   plt.show()
+   
+   #berdasarkan visualisasi sebelumnya dapat dilihat presentase-nya
+
+   print("Model dengan data yang tidak diseimbangkan")
+   print(f"TRUE POSITIF: {round(mx2[0][0] / (mx2[0][0] + mx2[0][1]) * 100, 2)}%")
+   print(f"TRUE NEGATIF: {round(mx2[1][1] / (mx2[1][1] + mx2[1][0]) * 100, 2)}%")
+   ```
+   ![image](https://user-images.githubusercontent.com/74480780/110516327-07929580-813c-11eb-8a73-5a2e73046e17.png)
+
+   Berdasarkan visualisasi di atas dapat dilihat bahwa model dengan data yang tidak diseimbangkan memiliki presentase
+   ![image](https://user-images.githubusercontent.com/74480780/110516417-2002b000-813c-11eb-974b-66a8f785f705.png)
+   
+   Kesimpulan yang dapat diambil berdasarkan pengecekan akurasi dengan confusion matrix di atas adalah kita dapat mengetahui perbandingan jumlah TRUE POSITIF, TRUE NEGATIF,      FALSE POSITIF, dan FALSE NEGATIF dari kedua buah model. Berdasarkan studi kasus kali ini, model yang memprediksi lebih banyak pasien yang stroke (TRUE POSITIF)
+   lebih baik karena artinya model dapat memprediksi kecenderungan pasien yang memiliki peluang besar mengidap stroke walau sebenarnya dia didiagnosa belum/tidak mengidap stroke. 
 
 
 
