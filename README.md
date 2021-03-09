@@ -171,7 +171,7 @@ Hal-hal yang ditemukan pada tahap exploratory data analysis yang perlu pengolaha
 2. Ubah kolom dengan data yang bertipe object/string menjadi tipe data numerik
 Terdapat dua metode untuk mengubah data yang bertipe object/string menjadi tipe data numerik, yaitu Label Encoding dan One Hot Encoding. Label Encoding dilakukan pada data yang memiliki tingkatan atau peringkat, sedangkan One Hot Encoding dilakukan pada data yang tidak memiliki tingkatan apapun. 
 
-Berdasarkan karakteristik data, metode yang akan digunakan ialah One Hot Encoding karena data yang diubah tipenya tidak memiliki tingkatan atau peringkat. Lakukan metode One Hot Encoding menggunakan fungsi get_dummies pada library pandas.
+ >>Berdasarkan karakteristik data, metode yang akan digunakan ialah One Hot Encoding karena data yang diubah tipenya tidak memiliki tingkatan atau peringkat. Lakukan metode One Hot Encoding menggunakan fungsi get_dummies pada library pandas.
    ```
    #lakukan One Hot Encoding pada data yang sudah diseimbangkan
    new_data = pd.get_dummies(new_data, drop_first=True)
@@ -180,7 +180,7 @@ Berdasarkan karakteristik data, metode yang akan digunakan ialah One Hot Encodin
    #lakukan One Hot Encoding pada data test juga
    test = pd.get_dummies(test, drop_first=True)
    ```
-   Saat data dicek kembali, terlihat data yang asalnya bertipe object/string sudah berubah menjadi data yang bertipe numerik
+ >>Saat data dicek kembali, terlihat data yang asalnya bertipe object/string sudah berubah menjadi data yang bertipe numerik
    ![image](https://user-images.githubusercontent.com/74480780/110509242-7bc93b00-8134-11eb-8fbe-30061c30bb67.png)
 
 ### d. Create Machine Learning Model
