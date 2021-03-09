@@ -56,25 +56,35 @@ Overview:
    test = pd.read_csv('/content/data test.csv')
    ```
 3. Cek 5 data teratas
-   `train.head()`
-    ![image](https://user-images.githubusercontent.com/74480780/110501697-05750a80-812d-11eb-86f2-465836259dfc.png)
+   ```
+   train.head()
+   ```
+   ![image](https://user-images.githubusercontent.com/74480780/110502864-2be77580-812e-11eb-9610-75421c2053f4.png)
 
 ### b. Exploratory Data Analysis (EDA)
 >Mengetahui dengan menganalisa karakteristik data dengan fungsi head(), info(), describe(), shape, dan beberapa perintah lainnya agar menemukan insight yang dapat berguna dalam pengolahan data dan perancangan model machine learning. Lalu, mencatat segala macam penemuan pada dataset seperti data yang kosong, tidak lengkap, redundant, atau data yang perlu pengolahan lebih lanjut. Hal-hal yang sudah dicatat tersebut akan diolah dan dieksekusi pada tahapan Data Preprocessing.
 >1. Cek 5 data teratas
-    `train.head()`
-    ![image](https://user-images.githubusercontent.com/74480780/110501697-05750a80-812d-11eb-86f2-465836259dfc.png)
+    ```
+    train.head()
+    ```
+   ![image](https://user-images.githubusercontent.com/74480780/110502864-2be77580-812e-11eb-9610-75421c2053f4.png)
 
 >2. Cek jumlah dan tipe data pada setiap kolom dataset
-    `train.info`
+    ```
+    train.info
+    ```
     ![image](https://user-images.githubusercontent.com/74480780/110501825-289fba00-812d-11eb-8bae-fd9d61c4bcd5.png)
 
 >3. Cek statistic summary dari dataset
-    `train.describe(include='all').T`
+    ```
+    train.describe(include='all').T
+    ```
     ![image](https://user-images.githubusercontent.com/74480780/110501946-4a00a600-812d-11eb-8ad1-f25041475a02.png)
 
 >4. Cek bentuk dimensi dari dataset
-    `train.shape`
+    ```
+    train.shape
+    ```
     
 >5. Melihat apa ada data yang kosong pada setiap kolom
 >6. Melihat urutan pasien berdasarkan umur
