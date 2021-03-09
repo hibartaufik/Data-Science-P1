@@ -35,6 +35,9 @@ Overview:
 
 ### a. Data Preparation
 1. Import semua library yang akan digunakan
+   ```
+   train['stroke'].value_counts()
+   ```
    ![image](https://user-images.githubusercontent.com/74480780/110493730-7adcdd00-8125-11eb-9680-05ad97d60c04.png)
 
 2. Import dataset yang akan diolah
