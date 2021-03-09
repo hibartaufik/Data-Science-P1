@@ -141,42 +141,45 @@ Hal-hal yang ditemukan pada tahap exploratory data analysis yang perlu pengolaha
 - Ubah kolom dengan data yang bertipe object menjadi numerik
 
 1. Seimbangkan jumlah data target yang mengidap stroke (1) dan yang tidak (0)
-```
-train['stroke'].value_counts()
-```
-![image](https://user-images.githubusercontent.com/74480780/110507336-7ec32c00-8132-11eb-95d8-5e542190ab56.png)
-```
-#pisahkan data target yang mengidap stroke dengan yang tidak ke dalam variabel yang berbeda
-negatif = train.loc[train['stroke'] == 0]
-positif = train.loc[train['stroke'] == 1]
+   ```
+   train['stroke'].value_counts()
+   ```
+   ![image](https://user-images.githubusercontent.com/74480780/110507336-7ec32c00-8132-11eb-95d8-5e542190ab56.png)
 
-print(f"Jumlah Data Negatif:\t{len(negatif)}")
-print(f"Jumlah Data Positif:\t{len(positif)}")
-```
->>Menyeimbangkan jumlah data dengan menyamakan data negatif dengan data positif karena perbandingan data yang jauh akan lebih baik dilakukan dengan metode Undersampling. Lakukan undersampling dengan menyamakan jumlah data negatif yang jauh lebih banyak dengan jumlah data positif.
-```
-negatif = negatif[:len(positif)]
+   ```
+   #pisahkan data target yang mengidap stroke dengan yang tidak ke dalam variabel yang berbeda
+   negatif = train.loc[train['stroke'] == 0]
+   positif = train.loc[train['stroke'] == 1]
 
-#cek kembali jumlah data target
-print(f"Jumlah Data Negatif:\t{len(negatif)}")
-print(f"Jumlah Data Positif:\t{len(positif)}")
+   print(f"Jumlah Data Negatif:\t{len(negatif)}")
+   print(f"Jumlah Data Positif:\t{len(positif)}")
+   ```
 
-#gabungkan data negatif dengan positif
-new_data = pd.concat([negatif, positif], ignore_index=True)
-```
+   Menyeimbangkan jumlah data dengan menyamakan data negatif dengan data positif karena perbandingan data yang jauh akan lebih baik dilakukan dengan metode Undersampling. Lakukan undersampling dengan menyamakan jumlah data negatif yang jauh lebih banyak dengan jumlah data positif.
+
+   ```
+   negatif = negatif[:len(positif)]
+
+   #cek kembali jumlah data target
+   print(f"Jumlah Data Negatif:\t{len(negatif)}")
+   print(f"Jumlah Data Positif:\t{len(positif)}")
+
+   #gabungkan data negatif dengan positif
+   new_data = pd.concat([negatif, positif], ignore_index=True)
+   ```
 
 2. Ubah kolom dengan data yang bertipe object/string menjadi tipe data numerik
 Terdapat dua metode untuk mengubah data yang bertipe object/string menjadi tipe data numerik, yaitu Label Encoding dan One Hot Encoding. Label Encoding dilakukan pada data yang memiliki tingkatan atau peringkat, sedangkan One Hot Encoding dilakukan pada data yang tidak memiliki tingkatan apapun. Berdasarkan karakteristik data, metode yang akan digunakan ialah One Hot Encoding karena data yang diubah tipenya tidak memiliki tingkatan atau peringkat. Lakukan metode One Hot Encoding menggunakan fungsi get_dummies pada library pandas.
-```
-#lakukan One Hot Encoding pada data yang sudah diseimbangkan
-new_data = pd.get_dummies(new_data, drop_first=True)
-#lakukan One Hot Encoding pada data yang tidak diseimbangkan
-train = pd.get_dummies(train, drop_first=True)
-#lakukan One Hot Encoding pada data test juga
-test = pd.get_dummies(test, drop_first=True)
-```
-Saat data dicek kembali, terlihat data yang asalnya bertipe object/string sudah berubah menjadi data yang bertipe numerik
-![image](https://user-images.githubusercontent.com/74480780/110509242-7bc93b00-8134-11eb-8fbe-30061c30bb67.png)
+   ```
+   #lakukan One Hot Encoding pada data yang sudah diseimbangkan
+   new_data = pd.get_dummies(new_data, drop_first=True)
+   #lakukan One Hot Encoding pada data yang tidak diseimbangkan
+   train = pd.get_dummies(train, drop_first=True)
+   #lakukan One Hot Encoding pada data test juga
+   test = pd.get_dummies(test, drop_first=True)
+   ```
+   Saat data dicek kembali, terlihat data yang asalnya bertipe object/string sudah berubah menjadi data yang bertipe numerik
+   ![image](https://user-images.githubusercontent.com/74480780/110509242-7bc93b00-8134-11eb-8fbe-30061c30bb67.png)
 
 ### d. Create Machine Learning Model
 Setelah data diolah dan dirasa telah ideal, maka selanjutnya ialah membuat model machine learning dari dataset tersebut. Berdasarkan studi kasus dan karakteristik data target, metode yang akan digunakan adalah klasifikasi dengan Decision Tree. Mengapa klasifikasi? karena tujuan dibuatnya model machine learning ini adalah untuk memprediksi pasien yang positif (1) mengidap stroke dan yang tidak mengidap (0) stroke, artinya model bertujuan untuk mengelompokkan (klasifikasi) pasien ke dalam dua buah golongan, yaitu yang mengidap stroke dan yang tidak mengidap stroke. Dengan begitu, model akan dibuat dengan DecisionTreeClassifier() pada library sklearn.tree.
