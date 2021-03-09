@@ -134,7 +134,47 @@ Menganalisa karakteristik data dengan fungsi head(), info(), describe(), shape, 
     train['stroke'].value_counts()
     ```
    ![image](https://user-images.githubusercontent.com/74480780/110506191-74546280-8131-11eb-8c61-cd2828095246.png)
+   
+### c. Data Preprocessing
+Hal-hal yang ditemukan pada tahap exploratory data analysis yang perlu pengolahan data agar mendapatkan data yang ideal untuk membuat model machine learning
+- Seimbangkan jumlah data target yang mengidap stroke (1) dan yang tidak (0)
+- Ubah kolom dengan data yang bertipe object menjadi numerik
 
+1. Seimbangkan jumlah data target yang mengidap stroke (1) dan yang tidak (0)
+```
+train['stroke'].value_counts()
+```
+![image](https://user-images.githubusercontent.com/74480780/110507336-7ec32c00-8132-11eb-95d8-5e542190ab56.png)
+```
+#pisahkan data target yang mengidap stroke dengan yang tidak ke dalam variabel yang berbeda
+negatif = train.loc[train['stroke'] == 0]
+positif = train.loc[train['stroke'] == 1]
+
+print(f"Jumlah Data Negatif:\t{len(negatif)}")
+print(f"Jumlah Data Positif:\t{len(positif)}")
+```
+Menyeimbangkan jumlah data dengan menyamakan data negatif dengan data positif karena perbandingan data yang jauh akan lebih baik dilakukan dengan metode Undersampling. Lakukan undersampling dengan menyamakan jumlah data negatif yang jauh lebih banyak dengan jumlah data positif.
+```
+negatif = negatif[:len(positif)]
+
+#cek kembali jumlah data target
+print(f"Jumlah Data Negatif:\t{len(negatif)}")
+print(f"Jumlah Data Positif:\t{len(positif)}")
+
+#gabungkan data negatif dengan positif
+new_data = pd.concat([negatif, positif], ignore_index=True)
+```
+
+
+
+
+
+
+
+
+
+
+2. Ubah kolom dengan data yang bertipe object/string menjadi tipe data numerik
 
 
 
