@@ -36,10 +36,19 @@ Overview:
 ### a. Data Preparation
 1. Import semua library yang akan digunakan
    ```
-   train['stroke'].value_counts()
-   ```
-   ![image](https://user-images.githubusercontent.com/74480780/110493730-7adcdd00-8125-11eb-9680-05ad97d60c04.png)
+   #import library yang akan digunakan
+   import pandas as pd
+   import matplotlib.pyplot as plt
 
+   import seaborn as sns
+   import numpy as np
+
+   from sklearn.model_selection import train_test_split
+   from sklearn.metrics import classification_report
+
+   from sklearn.metrics import confusion_matrix
+   from sklearn.tree import DecisionTreeClassifier
+   ```
 2. Import dataset yang akan diolah
    ![image](https://user-images.githubusercontent.com/74480780/110493970-b5467a00-8125-11eb-81d3-b0076e2ae11c.png)
 3. Cek 5 data teratas
