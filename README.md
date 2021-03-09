@@ -130,9 +130,9 @@ Menganalisa karakteristik data dengan fungsi head(), info(), describe(), shape, 
    ![image](https://user-images.githubusercontent.com/74480780/110506005-496a0e80-8131-11eb-8d15-2500c8ff8db1.png)
    
 10. Melihat jumlah data pada data feature yang akan diprediksi (target/label)
-   ```
-   train['stroke'].value_counts()
-   ```
+    ```
+    train['stroke'].value_counts()
+    ```
    ![image](https://user-images.githubusercontent.com/74480780/110506191-74546280-8131-11eb-8c61-cd2828095246.png)
 
 
