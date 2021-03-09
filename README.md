@@ -28,4 +28,7 @@ Overview:
    - Predict Test Data
    
    Tahapan di atas merupakan acuan yang digunakan untuk membuat model Machine Learning, tahapan tidak baku, dapat disesuaikan berdasarkan karakteristik data dan studi kasus
-7. Project berasal dari Tugas Besar Bootcamp 'Waroenk Skill #3 - Python Data Science 101'. Untuk lebih lengkapnya, dataset tersebut bisa diakses [disini](https://www.kaggle.com/c/waroenk-skill-3-competition). Untuk informasi seputar Wareonk Skill dapat diakses [disini](https://waroenkskill.id/).
+7. Project berasal dari Tugas Besar Bootcamp 'Waroenk Skill #3 - Python Data Science 101'.
+   - Repository project pada GitHub dapat diakses [disini](https://github.com/hibartaufik/Stroke-Prediction)
+   - Repository projct pada Google Colab dapat diakses disini [disini](https://colab.research.google.com/drive/1mZCqeNFj02YfWY0VlEOnVJfC6EEsQqMm?usp=sharing)
+   - Official Website Waroenk Skill dapat dilihat [disini](http://waroenkskill.id/)
