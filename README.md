@@ -50,34 +50,38 @@ Overview:
    from sklearn.tree import DecisionTreeClassifier
    ```
 2. Import dataset yang akan diolah
-   ![image](https://user-images.githubusercontent.com/74480780/110493970-b5467a00-8125-11eb-81d3-b0076e2ae11c.png)
+   ```
+   #import data
+   train = pd.read_csv('/content/data latih.csv')
+   test = pd.read_csv('/content/data test.csv')
+   ```
 3. Cek 5 data teratas
-   ![image](https://user-images.githubusercontent.com/74480780/110494395-29811d80-8126-11eb-84ef-769f607d99c0.png)
+   `train.head()`
+    ![image](https://user-images.githubusercontent.com/74480780/110501697-05750a80-812d-11eb-86f2-465836259dfc.png)
 
 ### b. Exploratory Data Analysis (EDA)
 >Mengetahui dengan menganalisa karakteristik data dengan fungsi head(), info(), describe(), shape, dan beberapa perintah lainnya agar menemukan insight yang dapat berguna dalam pengolahan data dan perancangan model machine learning. Lalu, mencatat segala macam penemuan pada dataset seperti data yang kosong, tidak lengkap, redundant, atau data yang perlu pengolahan lebih lanjut. Hal-hal yang sudah dicatat tersebut akan diolah dan dieksekusi pada tahapan Data Preprocessing.
 >1. Cek 5 data teratas
-    ![image](https://user-images.githubusercontent.com/74480780/110494395-29811d80-8126-11eb-84ef-769f607d99c0.png)
+    `train.head()`
+    ![image](https://user-images.githubusercontent.com/74480780/110501697-05750a80-812d-11eb-86f2-465836259dfc.png)
+
 >2. Cek jumlah dan tipe data pada setiap kolom dataset
-    ![image](https://user-images.githubusercontent.com/74480780/110495784-6ef21a80-8127-11eb-8f72-7ee669d26766.png)
+    `train.info`
+    ![image](https://user-images.githubusercontent.com/74480780/110501825-289fba00-812d-11eb-8bae-fd9d61c4bcd5.png)
+
 >3. Cek statistic summary dari dataset
-    ![image](https://user-images.githubusercontent.com/74480780/110496285-e9229f00-8127-11eb-951e-eefcfba9ed56.png)
+    `train.describe(include='all').T`
+    ![image](https://user-images.githubusercontent.com/74480780/110501946-4a00a600-812d-11eb-8ad1-f25041475a02.png)
+
 >4. Cek bentuk dimensi dari dataset
-    ![image](https://user-images.githubusercontent.com/74480780/110497196-d0ff4f80-8128-11eb-91ad-e5bad8b286d8.png)
+    `train.shape`
+    
 >5. Melihat apa ada data yang kosong pada setiap kolom
-    ![image](https://user-images.githubusercontent.com/74480780/110497488-11f76400-8129-11eb-99e0-f7bbb2420ba1.png)
 >6. Melihat urutan pasien berdasarkan umur
-    ![image](https://user-images.githubusercontent.com/74480780/110497820-626ec180-8129-11eb-8a37-99de290db29b.png)
 >7. Melihat jumlah pasien berdasarkan gender dengan visualisasi bar plot
-    ![image](https://user-images.githubusercontent.com/74480780/110498467-efb21600-8129-11eb-9f6e-2a86eed4c901.png)
-    ![image](https://user-images.githubusercontent.com/74480780/110498222-b8dc0000-8129-11eb-91d9-a18f5628a70f.png)
 >8. Melihat hubungan/korelasi antar feature pada dataset
-    ![image](https://user-images.githubusercontent.com/74480780/110498680-1f611e00-812a-11eb-952e-ed092afb0dd0.png)
 >9. Melihat hubungan/korelasi antar feature dengan visualisasi heatmap
-    ![image](https://user-images.githubusercontent.com/74480780/110499127-867ed280-812a-11eb-9ad5-045b0a4808d0.png)
-    ![image](https://user-images.githubusercontent.com/74480780/110499211-9991a280-812a-11eb-8a09-31a8264ac7bb.png)
 >10. Melihat jumlah data pada data feature yang akan diprediksi (target/label)
-    ![image](https://user-images.githubusercontent.com/74480780/110499438-ce9df500-812a-11eb-9dc3-358dcc97eb8b.png)
 
 
 
