@@ -32,3 +32,10 @@ Overview:
    - Repository project pada GitHub dapat diakses [disini](https://github.com/hibartaufik/Stroke-Prediction)
    - Repository projct pada Google Colab dapat diakses disini [disini](https://colab.research.google.com/drive/1mZCqeNFj02YfWY0VlEOnVJfC6EEsQqMm?usp=sharing)
    - Official Website Waroenk Skill dapat dilihat [disini](http://waroenkskill.id/)
+
+### a. Data Preparation
+1. Import semua library yang akan digunakan
+   ![image](https://user-images.githubusercontent.com/74480780/110493730-7adcdd00-8125-11eb-9680-05ad97d60c04.png)
+
+2. Import dataset yang akan diolah
+   ![image](https://user-images.githubusercontent.com/74480780/110493970-b5467a00-8125-11eb-81d3-b0076e2ae11c.png)
