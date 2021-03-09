@@ -153,7 +153,7 @@ positif = train.loc[train['stroke'] == 1]
 print(f"Jumlah Data Negatif:\t{len(negatif)}")
 print(f"Jumlah Data Positif:\t{len(positif)}")
 ```
->Menyeimbangkan jumlah data dengan menyamakan data negatif dengan data positif karena perbandingan data yang jauh akan lebih baik dilakukan dengan metode Undersampling. Lakukan undersampling dengan menyamakan jumlah data negatif yang jauh lebih banyak dengan jumlah data positif.
+>>Menyeimbangkan jumlah data dengan menyamakan data negatif dengan data positif karena perbandingan data yang jauh akan lebih baik dilakukan dengan metode Undersampling. Lakukan undersampling dengan menyamakan jumlah data negatif yang jauh lebih banyak dengan jumlah data positif.
 ```
 negatif = negatif[:len(positif)]
 
@@ -277,8 +277,40 @@ Selain pengecekan akurasi dengan fungsi score(), dilakukan juga pengecekan denga
    ![image](https://user-images.githubusercontent.com/74480780/110516417-2002b000-813c-11eb-974b-66a8f785f705.png)
    
    Kesimpulan yang dapat diambil berdasarkan pengecekan akurasi dengan confusion matrix di atas adalah kita dapat mengetahui perbandingan jumlah TRUE POSITIF, TRUE NEGATIF,      FALSE POSITIF, dan FALSE NEGATIF dari kedua buah model. Berdasarkan studi kasus kali ini, model yang memprediksi lebih banyak pasien yang stroke (TRUE POSITIF)
-   lebih baik karena artinya model dapat memprediksi kecenderungan pasien yang memiliki peluang besar mengidap stroke walau sebenarnya dia didiagnosa belum/tidak mengidap stroke. 
+   lebih baik karena artinya model dapat memprediksi kecenderungan pasien yang memiliki peluang besar mengidap stroke walau sebenarnya dia didiagnosa belum/tidak mengidap stroke.
+   
+### e. Predict Test Data
+Sekarang, kedua model sudah layak untuk dapat melakukan prediksi yang akan menghasilkan kumpulan data berbentuk list. Karena prediksi ini akan dikumpulkan di kaggle.com, maka perlu dilakukan perubahan bentuk dimensi agar sesuai dengan format data yang diminta.
+1. Sesuaikan bentuk data dengan drop 'id_pasien'
+   ```
+   #drop 'id_pasien' terlebih dahulu
+   new_test = test.drop('id_pasien', axis=1)
+   ```
+2. Melakukan prediksi dan memasukkan data prediksi tersebut ke dalam variabel
+   ```
+   #melakukan prediksi pada model dengan data yang diseimbangkan, lalu masukan ke variabel baru
+   predict = model_dt.predict(new_test)
 
+   #melakukan prediksi pada model dengan data yang tidak diseimbangkan, lalu masukan ke variabel baru
+   predict_pure = model_dt_pure.predict(new_test)
+   ```
+3. Membuat dataframe yang akan dikumpulkan di kaggle.com
+   ```
+   #lakukan pada prediksi dari model dengan data yang diseimbangkan
+   collect_1 = pd.DataFrame()
+   collect_1['id_pasien'] = test['id_pasien']
+   collect_1['stroke'] = predict
 
-
-
+   #lakukan pada prediksi dari model dengan data yang tidak diseimbangkan
+   collect_2 = pd.DataFrame()
+   collect_2['id_pasien'] = test['id_pasien']
+   collect_2['stroke'] = predict_pure
+   ```
+4. Export Kedua dataframe tersebut ke dalam file yang berformat csv (.csv)
+   ```
+   #export dataframe yang berisi prediksi
+   collect_1.to_csv('collect1.csv', index=False)
+   collect_2.to_csv('collect2.csv', index=False)
+   ```
+### Kesimpulan
+Lalu pertanyaannya, model mana yang lebih baik memprediksi orang yang mengidap stroke atau tidak? meskipun dalam beberapa pengecekan akurasi model dengan data yang tidak diseimbangkan memiliki angka yang lebih baik, namun hal tersebut bukan berarti model tersebut lebih baik. Wajar jika unbalance model memprediksi orang yang mengidap stroke lebih banyak karena model tersebut memang dibuat dan dipasangkan menggunakan data train yang memiliki data dengan label positif lebih banyak. Sedangkan untuk balanced model, skor akurasinya lebih kecil namun seimbang dalam distribusi jumlah labelnya. Dengan begitu, kedua model ini sama-sama dapat digunakan tergantung bagaimana kebutuhan dan situasinya.
