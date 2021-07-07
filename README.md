@@ -84,7 +84,7 @@ Overview:
    - Repository projct pada Google Colab dapat diakses disini [disini](https://colab.research.google.com/drive/1mZCqeNFj02YfWY0VlEOnVJfC6EEsQqMm?usp=sharing)
    - Official Website Waroenk Skill dapat dilihat [disini](http://waroenkskill.id/)
 
-### a. Data Preparation
+### 1. Data Preparation
 1. Import semua library yang akan digunakan
    ```
    #import library yang akan digunakan
@@ -112,7 +112,7 @@ Overview:
    ```
    ![image](https://user-images.githubusercontent.com/74480780/110502864-2be77580-812e-11eb-9610-75421c2053f4.png)
 
-### b. Exploratory Data Analysis (EDA)
+### 2. Exploratory Data Analysis (EDA)
 Menganalisa karakteristik data dengan fungsi head(), info(), describe(), shape, dan beberapa perintah lainnya agar menemukan insight yang dapat berguna dalam pengolahan data dan perancangan model machine learning. Lalu, mencatat segala macam penemuan pada dataset seperti data yang kosong, tidak lengkap, redundant, atau data yang perlu pengolahan lebih lanjut. Hal-hal yang sudah dicatat tersebut akan diolah dan dieksekusi pada tahapan Data Preprocessing.
 1. Cek 5 data teratas
 
@@ -186,7 +186,7 @@ Menganalisa karakteristik data dengan fungsi head(), info(), describe(), shape, 
     ```
    ![image](https://user-images.githubusercontent.com/74480780/110506191-74546280-8131-11eb-8c61-cd2828095246.png)
    
-### c. Data Preprocessing
+### 3. Data Preprocessing
 Hal-hal yang ditemukan pada tahap exploratory data analysis yang perlu pengolahan data agar mendapatkan data yang ideal untuk membuat model machine learning
 - Seimbangkan jumlah data target yang mengidap stroke (1) dan yang tidak (0)
 - Ubah kolom dengan data yang bertipe object menjadi numerik
@@ -235,7 +235,7 @@ Hal-hal yang ditemukan pada tahap exploratory data analysis yang perlu pengolaha
    Saat data dicek kembali, terlihat data yang asalnya bertipe object/string sudah berubah menjadi data yang bertipe numerik
    ![image](https://user-images.githubusercontent.com/74480780/110509242-7bc93b00-8134-11eb-8fbe-30061c30bb67.png)
 
-### d. Create Machine Learning Model
+### 4. Create Machine Learning Model
 Setelah data diolah dan dirasa telah ideal, maka selanjutnya ialah membuat model machine learning dari dataset tersebut. Berdasarkan studi kasus dan karakteristik data target, metode yang akan digunakan adalah klasifikasi dengan Decision Tree. Mengapa klasifikasi? karena tujuan dibuatnya model machine learning ini adalah untuk memprediksi pasien yang positif (1) mengidap stroke dan yang tidak mengidap (0) stroke, artinya model bertujuan untuk mengelompokkan (klasifikasi) pasien ke dalam dua buah golongan, yaitu yang mengidap stroke dan yang tidak mengidap stroke. Dengan begitu, model akan dibuat dengan DecisionTreeClassifier() pada library sklearn.tree.
 
 Terdapat dua buah model machine learning yang akan dibuat. Model pertama adalah model dengan data yang sudah diseimbangkan jumlah datanya, sedangkan model kedua ialah model dengan data yang tidak diseimbangkan. Pada tahap Model Evaluation, kedua model ini akan dibandingkan bagaimana peforma nilai akurasinya untuk memprediksi data target dengan berbagai metode evaluasi.
@@ -277,7 +277,7 @@ Terdapat dua buah model machine learning yang akan dibuat. Model pertama adalah 
    ```
    ![image](https://user-images.githubusercontent.com/74480780/110517891-04000e00-813e-11eb-8942-58390aed82d9.png)
    
-### e. Model Evaluation
+### 5. Model Evaluation
 Selain pengecekan akurasi dengan fungsi score(), dilakukan juga pengecekan dengan menggunakan metric lain dengan fungsi classification_report() pada library sklearn.metrics
 1. Pengecekan akurasi dengan classification_report()
    ```
@@ -336,7 +336,7 @@ Selain pengecekan akurasi dengan fungsi score(), dilakukan juga pengecekan denga
    Kesimpulan yang dapat diambil berdasarkan pengecekan akurasi dengan confusion matrix di atas adalah kita dapat mengetahui perbandingan jumlah TRUE POSITIF, TRUE NEGATIF,      FALSE POSITIF, dan FALSE NEGATIF dari kedua buah model. Berdasarkan studi kasus kali ini, model yang memprediksi lebih banyak pasien yang stroke (TRUE POSITIF)
    lebih baik karena artinya model dapat memprediksi kecenderungan pasien yang memiliki peluang besar mengidap stroke walau sebenarnya dia didiagnosa belum/tidak mengidap stroke.
    
-### e. Predict Test Data
+### 6. Predict Test Data
 Sekarang, kedua model sudah layak untuk dapat melakukan prediksi yang akan menghasilkan kumpulan data berbentuk list. Karena prediksi ini akan dikumpulkan di kaggle.com, maka perlu dilakukan perubahan bentuk dimensi agar sesuai dengan format data yang diminta.
 1. Sesuaikan bentuk data dengan drop 'id_pasien'
    ```
