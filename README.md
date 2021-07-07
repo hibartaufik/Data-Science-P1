@@ -1,9 +1,55 @@
 # Hibar_Portfolio
 Data science portfolio
 
-## [Project 2: Data Analysis - Covid19 in Indonesia](https://github.com/hibartaufik/Data-Analysis-Covid-in-Indonesia)
+## Project 2: Data Analysis - Covid19 in Indonesia
+Overview:
+1. Membuat analisis data dengan python berdasarkan dataset yang berisi data COVID-19 di Indonesia
+2. Dataset berasal dari [kaggle.com](https://www.kaggle.com/) dengan nama COVID-19 Indonesia Dataset yang disusun oleh Hendratno yang mengambil data dari beberapa sumber yaitu [situs resmi pemerintah SATGAS COVID-19](https://covid19.go.id/), [Badan Pusat Statistik](https://www.bps.go.id/), dan [Hub InaCOVID-19](https://bnpb-inacovid19.hub.arcgis.com/)
+3. Dataset disusun berdasarkan time series atau sususan waktu, tingkat nasional, dan tingkat provinsi, juga beserta data demografi dari lokasi/daerah tersebut
+4. Dataset memiliki 37 feature/kolom
+   - **'Date'** (Tanggal dilaporkan)
+   - **'Location ISO Code'** (Kode lokasi berdasarkan standar ISO)
+   - **'Location'** (Nama lokasi)
+   - **'New Cases'** (Kasus positif harian)
+   - **'New Deaths'** (Kasus kematian harian)
+   - **'New Daily Recovered'** (Kasus kesembuhan harian)
+   - **'New Active Cases'** (Kasus aktif harian)
+   - **'Total Cases'** (Jumlah akumulatif kasus positif sampai waktu terkait)
+   - **'Total Deaths'** (Jumlah akumulatif kasus kematian sampai waktu terkait)
+   - **'Total Recovered'** (Jumlah akumulatif kasus kesembuhan sampai waktu terkait)
+   - **'Total Active Cases'** (Jumlah akumulatif kasus aktif sampai waktu terkait)
+   - **'Location Level'** (Tingkat lokasi regional atau nasional)
+   - **'City or Regency'** (Nama kota atau wilayah)
+   - **'Province'** (Nama provinsi lokasi)
+   - **'Country'** (Nama negara lokasi)
+   - **'Island'** (Nama pulau utama lokasi)
+   - **'Time Zone'** (Zona waktu lokasi)
+   - **'Special Status'** (Status istimewa lokasi)
+   - **'Total Regencies'** (Jumlah kabupaten dalam lokasi terkait)
+   - **'Total Cities'** (Jumlah kota dalam lokasi terkait)
+   - **'Total Districts'** (Jumlah kecamatan dalam lokasi terkait)
+   - **'Total Urban Village'** (Jumlah pedesaan dalam lokasi terkait)
+   - **'Total Rural Village'** (Jumlah perkampungan dalam lokasi terkait)
+   - **'Area (km2)'** (Area lokasi dalam kilometer persegi)
+   - **'Population'** (Jumlah populasi dalam lokasi terkait)
+   - **'Population Density'** (Kepadatan penduduk dalam lokasi terkait, rumus = Population / Area)
+   - **'Longitude'** (Garis bujur lokasi)
+   - **'Latitude'** (Garis lintang lokasi)
+   - **'New Cases per Million'** (Rumus = (New Cases / Population) x 1.000.000)
+   - **'Total Cases per Million'** (Rumus = (Total Cases / Population) x 1.000.000)
+   - **'Total Deaths per Million'** (Rumus = (Total Deaths / Population) x 1.000.000)
+   - **'Case Fatality Rate'** (Rumus = (Total Deaths / Total Cases) x 100)
+   - **'Case Recovered Rate'** (Rumus = (Total Recovered / Total Cases) x 100)
+   - **'Growth Factor of New Cases'** (Kurang dari 1 artinya menurun, 1 artinya tidak ada perubahan, lebih dari 1 artinya meningkat, rumus = Today New Cases / Yesterday New Cases)
+   - **'Growth Factor of New Deaths'** (Kurang dari 1 artinya menurun, 1 artinya tidak ada perubahan, lebih dari 1 artinya meningkat, rumus = Today New Deaths / Yesterday New Deaths)
+5. Tahapan dalam menganalisa data terbagi menjadi dua tahap
+   - Data Preparation
+   - Exploratory Data Analysis
+6. Project menggunakan dataset berasal [kaggle](https://www.kaggle.com/), yang disusun oleh Hendratno.
+   - Repository project Github dapat diakses [disini](https://github.com/hibartaufik/Data-Analysis-Covid-in-Indonesia)
+   - Dataset dapat diakses [disini](https://www.kaggle.com/hendratno/covid19-indonesia)
 
-## [Project 1: Stroke Prediction](https://github.com/hibartaufik/Stroke-Prediction) [Waroenk Skill Bootcamp Competition on Kaggle]
+## Project 1: Stroke Prediction [Waroenk Skill Bootcamp Competition on Kaggle]
 Overview:
 1. Membuat model machine learning yang memprediksi pengidap stroke berdasarkan data yang ada 
 2. Data yang disediakan yaitu data train dan data test
