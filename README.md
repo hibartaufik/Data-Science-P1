@@ -49,6 +49,9 @@ Overview:
    - Repository project Github dapat diakses [disini](https://github.com/hibartaufik/Data-Analysis-Covid-in-Indonesia)
    - Dataset dapat diakses [disini](https://www.kaggle.com/hendratno/covid19-indonesia)
 
+### 1. Data Preparation
+### 2. Exploratory Data Analysis (EDA)
+
 ## Project 1: Stroke Prediction [Waroenk Skill Bootcamp Competition on Kaggle]
 Overview:
 1. Membuat model machine learning yang memprediksi pengidap stroke berdasarkan data yang ada 
