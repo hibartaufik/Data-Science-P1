@@ -42,7 +42,7 @@ Overview:
    - **'Case Recovered Rate'** (Rumus = (Total Recovered / Total Cases) x 100)
    - **'Growth Factor of New Cases'** (Kurang dari 1 artinya menurun, 1 artinya tidak ada perubahan, lebih dari 1 artinya meningkat, rumus = Today New Cases / Yesterday New Cases)
    - **'Growth Factor of New Deaths'** (Kurang dari 1 artinya menurun, 1 artinya tidak ada perubahan, lebih dari 1 artinya meningkat, rumus = Today New Deaths / Yesterday New Deaths)
-5. Tahapan dalam menganalisa data terbagi menjadi dua tahap
+5. Tahapan dalam menganalisa data terbagi menjadi tiga tahap
    - Data Preparation
    - Data Wrangling
    - Data Analysis
