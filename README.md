@@ -1,6 +1,8 @@
 # Hibar_Portfolio
 Data science portfolio
 
+## [Project 2: Data Analysis - Covid19 in Indonesia](https://github.com/hibartaufik/Data-Analysis-Covid-in-Indonesia)
+
 ## [Project 1: Stroke Prediction](https://github.com/hibartaufik/Stroke-Prediction) [Waroenk Skill Bootcamp Competition on Kaggle]
 Overview:
 1. Membuat model machine learning yang memprediksi pengidap stroke berdasarkan data yang ada 
@@ -320,6 +322,3 @@ Sekarang, kedua model sudah layak untuk dapat melakukan prediksi yang akan mengh
    ```
 ### Kesimpulan
 Lalu pertanyaannya, model mana yang lebih baik memprediksi orang yang mengidap stroke atau tidak? meskipun dalam beberapa pengecekan akurasi model dengan data yang tidak diseimbangkan memiliki angka yang lebih baik, namun hal tersebut bukan berarti model tersebut lebih baik. Wajar jika unbalance model memprediksi orang yang mengidap stroke lebih banyak karena model tersebut memang dibuat dan dipasangkan menggunakan data train yang memiliki data dengan label positif lebih banyak. Sedangkan untuk balanced model, skor akurasinya lebih kecil namun seimbang dalam distribusi jumlah labelnya. Dengan begitu, kedua model ini sama-sama dapat digunakan tergantung bagaimana kebutuhan dan situasinya.
-
-
-## [Project 2: Data Analysis - Covid19 in Indonesia](https://github.com/hibartaufik/Data-Analysis-Covid-in-Indonesia)
