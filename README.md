@@ -1,7 +1,7 @@
 # Hibar_Portfolio
 Data science portfolio
 
-## Project 2: Data Analysis - Covid19 in Indonesia
+## Project 2: Data Analysis [COVID-19 Indonesia Dataset]
 Overview:
 1. Membuat analisis data dengan python berdasarkan dataset yang berisi data COVID-19 di Indonesia
 2. Dataset berasal dari [kaggle.com](https://www.kaggle.com/) dengan nama COVID-19 Indonesia Dataset yang disusun oleh Hendratno yang mengambil data dari beberapa sumber yaitu [situs resmi pemerintah SATGAS COVID-19](https://covid19.go.id/), [Badan Pusat Statistik](https://www.bps.go.id/), dan [Hub InaCOVID-19](https://bnpb-inacovid19.hub.arcgis.com/)
