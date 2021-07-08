@@ -1,4 +1,4 @@
-# Hibar_Portfolio
+# My Portfolio
 Data science portfolio
 
 ## Project 2: Data Analysis [COVID-19 Indonesia Dataset]
