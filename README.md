@@ -127,9 +127,9 @@ plt.show()
 #### 3.1 Q1: Per tanggal berapa kasus baru COVID-19 terbanyak ditemukan dalam satu hari?
 A1.1 : Urutan 10 tanggal dengan kasus COVID-19 paling banyak
 
-Filter data berdasarkan kolom 'New Cases', lalu tampilkan 10 data dengan jumlah angka kesembuhan terbanyak
+Filter data berdasarkan kolom **'New Cases'**, lalu tampilkan 10 data dengan jumlah angka kesembuhan terbanyak beserta tanggalnya(kolom **'Date'**). Lalu tampilkan juga kolom **'Location'** untuk menunjukkan bahwa angka **'New Cases'** di-akumulatif tidak dari satu lokasi saja (Akumulatif dari seluruh wilayah di Indonesia per tanggal terkait).
 ```
-top_10_date_new_cases = df.sort_values(by='New Cases', ascending=False, ignore_index=True)[['Date', 'New Cases']][:10]
+top_10_date_new_cases = df.sort_values(by='New Cases', ascending=False, ignore_index=True)[['Date', 'New Cases', 'Location']][:10]
 top_10_date_new_cases
 ```
 ![image](https://user-images.githubusercontent.com/74480780/124798830-09e7ed80-df7e-11eb-857c-9f4784fe8cc0.png)
