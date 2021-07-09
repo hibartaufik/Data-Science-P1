@@ -105,7 +105,7 @@ df.info()
 ![image](https://user-images.githubusercontent.com/74480780/124797451-7530c000-df7c-11eb-8460-a483cf5fc4f8.png)
 Kini dataset memiliki 19 kolom/feature
 ### 3. Data Analysis
-Kita dapat melihat korelasi atau hubungan tiap kolom/feature pada dataset
+Melihat korelasi atau hubungan tiap kolom/feature pada dataset
 ```
 # melihat korelasi/hubungan tiap data antar kolom/feature
 df.corr()
