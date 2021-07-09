@@ -132,7 +132,7 @@ Filter data berdasarkan kolom **'New Cases'**, lalu tampilkan 10 data dengan jum
 top_10_date_new_cases = df.sort_values(by='New Cases', ascending=False, ignore_index=True)[['Date', 'New Cases', 'Location']][:10]
 top_10_date_new_cases
 ```
-![image](https://user-images.githubusercontent.com/74480780/124798830-09e7ed80-df7e-11eb-857c-9f4784fe8cc0.png)
+![image](https://user-images.githubusercontent.com/74480780/125093059-29a52000-e0fc-11eb-9640-14f00cb48efa.png)
 Berdasarkan urutan data di atas, kasus COVID-19 paling banyak ditemukan dalam satu hari yaitu pada tanggal 30 Januari 2021 sebanyak 14.518 kasus baru. Hal menariknya yaitu 9 dari 10 tanggal teratas dengan kasus COVID-19 per hari terbanyak berada pada bulan Januari 2021, artinya kasus cenderung naik pada bulan Januari 2021 dan mencapai puncaknya pada akhir bulan.
 
 A1.2 : Visualisasi kenaikan **'New Cases'** berdasarkan urutan 10 tanggal dengan kasus COVID-19 paling banyak per hari
