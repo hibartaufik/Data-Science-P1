@@ -6,7 +6,7 @@ Overview:
 2. Analysis dan Visualisasi yang lebih lengkap dapat dilihat di Project 2 dengan dataset yang sama, project ini lebih berfokus pada pemodelan machine learning
 3. Dataset berasal dari [kaggle.com](https://www.kaggle.com/) dengan nama COVID-19 Indonesia Dataset yang disusun oleh Hendratno yang mengambil data dari beberapa sumber yaitu [situs resmi pemerintah SATGAS COVID-19](https://covid19.go.id/), [Badan Pusat Statistik](https://www.bps.go.id/), dan [Hub InaCOVID-19](https://bnpb-inacovid19.hub.arcgis.com/)
 4. Dataset disusun berdasarkan time series atau sususan waktu, tingkat nasional, dan tingkat provinsi, juga beserta data demografi dari lokasi/daerah tersebut
-5. Dataset memiliki 37 feature/kolom
+5. Dataset memiliki kolom
    - **'Date'** (Tanggal dilaporkan)
    - **'Location ISO Code'** (Kode lokasi berdasarkan standar ISO)
    - **'Location'** (Nama lokasi)
@@ -89,7 +89,7 @@ df.info()
 ```
 ![image](https://user-images.githubusercontent.com/74480780/126043555-b7b82782-3302-4832-a8e0-afd50c7ba05a.png)
 ![image](https://user-images.githubusercontent.com/74480780/126043559-ae17dde2-b79c-4a48-bf5e-b6700e2d9aab.png)
-Dataset memiliki 37 feature/kolom, terdiri dari 12 kolom dengan tipe data katagorikal dan 25 kolom dengan tipe data numerikal.
+Dataset memiliki 37 kolom, terdiri dari 12 kolom dengan tipe data object/string, 12 kolom dengan tipe data integer, dan 13 kolom dengan tipe data float.
 ```
 # Melihat summary statistics
 df.describe()
@@ -113,8 +113,8 @@ for col in columns:
 ![image](https://user-images.githubusercontent.com/74480780/126043633-9107a780-ea62-40b2-9852-02853be22e6d.png)
 Membuat looping untuk memfilter setiap kolom dalam dataset dan mengelompokannya ke dalam beberapa list untuk menentukan kolom mana saja yang akan diimputasi (kolom yang memiliki jumlah data null < 40%) dan kolom mana yang harus di drop (kolom yang memiliki jumlah data null > 40%) nantinya.
 
-- `cols_null_num` untuk kolom yang memiliki jumlah data null < 40% dan bertipe data numerik
-- `cols_null_obj` untuk kolom yang memiliki jumlah data null < 40% dan bertipe data kategori
+- `cols_null_num` untuk kolom yang memiliki jumlah data null < 40% dan bertipe data numerik (integer & float)
+- `cols_null_obj` untuk kolom yang memiliki jumlah data null < 40% dan bertipe data object (string)
 - `cols_drop` untuk kolom yang memiliki jumlah data null > 40%
 
 ```
@@ -132,12 +132,12 @@ for col in columns:
 ```
 ```
 print(f"Kolom numerik: {cols_null_num}")
-print(f"Kolom kategori: {cols_null_obj}")
+print(f"Kolom object: {cols_null_obj}")
 ```
 ![image](https://user-images.githubusercontent.com/74480780/126043678-b3b09949-6d2d-4ed0-958a-ab90efa31ab4.png)
 Kolom yang akan diimputasi:
 - Kolom numerik: 'Total Cities', 'Total Urban Villages', 'Total Rural Villages', 'Growth Factor of New Cases', 'Growth Factor of New Deaths'
-- Kolom kategori: 'Province', 'Island', 'Time Zone'
+- Kolom object: 'Province', 'Island', 'Time Zone'
 
 ##### 2.1.1 Melihat Distribusi Data Untuk Menetukan Nilai Imputasi Tiap Kolom
 - Kolom Numerik
@@ -150,11 +150,11 @@ for col in cols_null_num:
 ![image](https://user-images.githubusercontent.com/74480780/126043803-59567879-b64b-45ba-b767-36c5fad6071b.png)
 ![image](https://user-images.githubusercontent.com/74480780/126043826-292d94c3-e2cb-4eb0-87f1-2baf97acedbf.png)
 ![image](https://user-images.githubusercontent.com/74480780/126043839-477ab33d-3093-4ea8-b599-b80cd0bf2090.png)
-Kita dapat menetukan nilai yang akan mengganti nilai kosong berdasarkan distribusi data tiap feature. Untuk 'Total Rural Villages' memiliiki data berdistrbusi 'nyaris' normal, nilai modus merupakan pilihan tepat karena data yang bernilai bulat, mengapa tidak mean? karena nilai mean tidak terlalu bisa mewakili distribusi data yang tidak benar-benar normal/merata.
+Kita dapat menetukan nilai yang akan mengganti nilai kosong berdasarkan distribusi data tiap kolom. Untuk 'Total Rural Villages' memiliiki data berdistrbusi 'nyaris' normal, nilai modus merupakan pilihan tepat karena data yang bernilai bulat, mengapa tidak mean? karena nilai mean tidak terlalu bisa mewakili distribusi data yang tidak benar-benar normal/merata.
 
-Untuk kolom numerik lain seperti 'Total Cities', 'Total Urban Villages', 'Growth Factor of New Cases', dan 'Growth Factor of New Deaths' memiliki data yang sama sekali tidak merata, sehingga nilai median merupakan nilai yang cocok untuk dapat mengisi data null si setiap feature-nya.
+Untuk kolom numerik lain seperti 'Total Cities', 'Total Urban Villages', 'Growth Factor of New Cases', dan 'Growth Factor of New Deaths' memiliki data yang sama sekali tidak merata, sehingga nilai median merupakan nilai yang cocok untuk dapat mengisi data null si setiap kolom-nya.
 
-- Kolom Kategori
+- Kolom Object
 ```
 for col in cols_null_obj:
   sns.displot(df[col].value_counts(), kde=True)
@@ -164,7 +164,7 @@ for col in cols_null_obj:
 ![image](https://user-images.githubusercontent.com/74480780/126043926-956818ae-9d8a-45ff-8cbb-a5002e816701.png)
 Data null pada 'Province', 'Island', dan 'Time Zone' kurang baik jika diisi dengan modus data karena tidak bisa merepresentasikan data kolom terkait seperti provinsi atau pulau saat kasus COVID-19 ditemukan tidak akan dapat direpresentasikan dengan nama provinsi atau pulau yang paling banyak datanya.
 
-Namun solusi drop kolom juga kurang baik karena data null memiliki komposisi yang sedikit. Yang akan dilakukan adalah mengisi nilai null tersebut dengan angka nol, meskipun nilai nol tersebut diisi pada kolom kategori, namun pada akhirnya kolom tersebut juga akan diubah ke dalam bentuk numerik sehingga pengisian nilai nol tidak akan bermasalah.
+Namun solusi drop kolom juga kurang baik karena data null memiliki komposisi yang sedikit. Yang akan dilakukan adalah mengisi nilai null tersebut dengan angka nol, meskipun nilai nol tersebut diisi pada kolom yang bertipe data object (string), namun pada akhirnya kolom tersebut juga akan diubah ke dalam bentuk numerik sehingga pengisian nilai nol tidak akan bermasalah.
 
 #### 2.2 Menentukan Kolom yang Akan di Drop
 ```
@@ -189,7 +189,7 @@ Beberapa hal yang didapatkan dari proses EDA adalah:
       - 'Island' -> 0
       - 'Time Zone' -> 0
   
-  - Drop Feature:
+  - Drop:
 
     - 'City or Regency'
     - 'Special Status'
@@ -229,11 +229,10 @@ df.isnull().sum()
 ![image](https://user-images.githubusercontent.com/74480780/126044075-8735d61e-e17d-422f-8b59-ccca07f335c8.png)
 
 #### 3.3 Ubah Tipe Data Kolom Kategori Menjadi Numerik
-*Dataset memiliki 37 feature/kolom, terdiri dari 12 kolom dengan tipe data katagorikal dan 25 kolom dengan tipe data numerikal*
 
-Disini kita akan menggunakan teknik Label Encoding. Meskipun hampir semua kolom kategorik dalam dataset tidak bersifat ordinal, namun jumlah kolom kategorik terlalu banyak sehingga akan terbentuk lebih banyak kolom saat kita melakukan Encoding dengan One-Hot Encoding yang tentu tidak efisien untuk dataset. Dengan pertimbangan tersebut, Label Encoding merupakan pilihan yang cocok.
+Disini kita akan menggunakan teknik Label Encoding. Meskipun hampir semua kolom object dalam dataset tidak bersifat ordinal, namun jumlah kolom kategorik terlalu banyak sehingga akan terbentuk lebih banyak kolom saat kita melakukan Encoding dengan One-Hot Encoding yang tentu tidak efisien untuk dataset. Dengan pertimbangan tersebut, Label Encoding merupakan pilihan yang cocok.
 ```
-# Membuat fungsi untuk mengubah tipe data kolom dengan metode Label Encoding
+# Membuat fungsi untuk mengubah kolom dengan metode Label Encoding
 le = LabelEncoder()
 
 def label_encoder(df):
@@ -339,7 +338,7 @@ Overview:
 1. Membuat analisis data dengan python berdasarkan dataset yang berisi data COVID-19 di Indonesia
 2. Dataset berasal dari [kaggle.com](https://www.kaggle.com/) dengan nama COVID-19 Indonesia Dataset yang disusun oleh Hendratno yang mengambil data dari beberapa sumber yaitu [situs resmi pemerintah SATGAS COVID-19](https://covid19.go.id/), [Badan Pusat Statistik](https://www.bps.go.id/), dan [Hub InaCOVID-19](https://bnpb-inacovid19.hub.arcgis.com/)
 3. Dataset disusun berdasarkan time series atau sususan waktu, tingkat nasional, dan tingkat provinsi, juga beserta data demografi dari lokasi/daerah tersebut
-4. Dataset memiliki 37 feature/kolom
+4. Dataset memiliki 37 kolom
    - **'Date'** (Tanggal dilaporkan)
    - **'Location ISO Code'** (Kode lokasi berdasarkan standar ISO)
    - **'Location'** (Nama lokasi)
@@ -403,31 +402,31 @@ df.head()
 #### 2.1 Memahami Isi Data
 Sumber dataset berasal dari kaggle.com, disusun oleh Hendratno. Data disusun berdasarkan time series, baik di tingkat negara (Indonesia), maupun di tingkat provinsi. Data didapatkan dari berbagai sumber yaitu [situs resmi pemerintah SATGAS COVID-19](https://covid19.go.id/), [Badan Pusat Statistik](https://www.bps.go.id/), dan [Hub InaCOVID-19](https://bnpb-inacovid19.hub.arcgis.com/).
 
-Memeriksa dan menemukan data yang bersifat redundant, data yang terduplikasi, dan data NULL yang sekiranya tidak dibutuhkan dalam analisa. Setelah data ditemukan, maka data akan di drop/dibuang agar dataset yang di-analisa lebih rapi dan menghasilkan insight-insight yang lebih akurat. Hal pertama yang dilakukan ialah memahami data dari tiap feature/kolom dengan membaca deskripsi atau summary tiap feature/kolom dari dataset. Untuk dataset yang sedang digunakan, kita dapat mengetahui deskripsi tiap feature/kolom dengan mengakses sumber dataset di [kaggle.com](https://www.kaggle.com/).
+Memeriksa dan menemukan data yang bersifat redundant, data yang terduplikasi, dan data NULL yang sekiranya tidak dibutuhkan dalam analisa. Setelah data ditemukan, maka data akan di drop/dibuang agar dataset yang di-analisa lebih rapi dan menghasilkan insight-insight yang lebih akurat. Hal pertama yang dilakukan ialah memahami data dari tiap kolom dengan membaca deskripsi atau summary tiap kolom dari dataset. Untuk dataset yang sedang digunakan, kita dapat mengetahui deskripsi tiap kolom dengan mengakses sumber dataset di [kaggle.com](https://www.kaggle.com/).
 
 #### 2.2 Menemukan dan Membuang Data yang Tidak Dibutuhkan
-- Memeriksa data tiap kolom/feature
+- Memeriksa data tiap kolom
 ```
 df.info()
 ```
 ![image](https://user-images.githubusercontent.com/74480780/124795772-9c868d80-df7a-11eb-87cb-bd0a1a2dc444.png)
 ![image](https://user-images.githubusercontent.com/74480780/124795898-c3dd5a80-df7a-11eb-9218-21e87d89db55.png)
-Dataset memiliki 37 feature/kolom, terdiri dari 12 feature dengan tipe data katagorikal dan 25 feature dengan tipe data numerikal(12 kolom dengan tipe data integer dan 13 kolom dengan tipe data float). Kita juga dapat memeriksa dimensi dataset untuk memastikan jumlah kolom dan baris.
+Dataset memiliki 37 kolom, terdiri dari 12 kolom dengan tipe data object/string, 12 kolom dengan tipe data integer, dan 13 kolom dengan tipe data float. Kita juga dapat memeriksa dimensi dataset untuk memastikan jumlah kolom dan baris.
 ```
 df.shape
 ```
 ![image](https://user-images.githubusercontent.com/74480780/124796275-2df5ff80-df7b-11eb-9e15-839ef8ea4431.png)
-Mengetahui karakteristik data dengan memeriksa jumlah data NULL dalam setiap kolom/feature
+Mengetahui karakteristik data dengan memeriksa jumlah data NULL dalam setiap kolom
 ```
 df.isnull().sum()
 ```
 ![image](https://user-images.githubusercontent.com/74480780/124796852-d1471480-df7b-11eb-95ed-e592f8c7243a.png)
 ![image](https://user-images.githubusercontent.com/74480780/124796942-e91e9880-df7b-11eb-9fb9-80f977cb3ff3.png)
-Terlihat dalam beberapa kolom/feature dataset memiliki data NULL, bahkan untuk kolom **'City or Regency'** semua datanya bernilai NULL. Setelah kita memahami isi data dengan membaca deskripsi tiap kolom/feature, kita dapat menetukan kolom mana saja yang tidak terlalu penting dan harus di drop.
+Terlihat dalam beberapa kolom dataset memiliki data NULL, bahkan untuk kolom **'City or Regency'** semua datanya bernilai NULL. Setelah kita memahami isi data dengan membaca deskripsi tiap kolom, kita dapat menetukan kolom mana saja yang tidak terlalu penting dan harus di drop.
 
-- Drop kolom/feature yang dirasa tidak dibutuhkan
+- Drop kolom yang dirasa tidak dibutuhkan
 
-Kolom/feature yang akan di drop yaitu **'Location ISO Code'**, **'City or Regency'**, **'Country'**, **'Continent'**, **'Time Zone'**, **'Special Status'**, **'Total Cities'**, **'Total Districts'**, **'Total Regencies'**, **'Total Urban Villages'**, **'Total Rural Villages'**, **'Area (km2)'**, **'New Cases per Million'**, **'Total Cases per Million'**, **'New Deaths per Million'**, **'Total Deaths per Million'**, **'Growth Factor of New Cases'**, dan **'Growth Factor of New Deaths'**.
+Kolom yang akan di drop yaitu **'Location ISO Code'**, **'City or Regency'**, **'Country'**, **'Continent'**, **'Time Zone'**, **'Special Status'**, **'Total Cities'**, **'Total Districts'**, **'Total Regencies'**, **'Total Urban Villages'**, **'Total Rural Villages'**, **'Area (km2)'**, **'New Cases per Million'**, **'Total Cases per Million'**, **'New Deaths per Million'**, **'Total Deaths per Million'**, **'Growth Factor of New Cases'**, dan **'Growth Factor of New Deaths'**.
 ```
 df.drop(['Location ISO Code', 'City or Regency', 'Country', 'Continent', 'Time Zone', 'Special Status', 'Total Cities', 'Total Districts', 'Total Regencies', 'Total Urban Villages', 'Total Rural Villages', 'Area (km2)', 'New Cases per Million', 'Total Cases per Million', 'New Deaths per Million', 'Total Deaths per Million', 'Growth Factor of New Cases', 'Growth Factor of New Deaths'], axis=1, inplace=True)
 ```
@@ -436,11 +435,11 @@ Cek untuk melihat perubahan yang sudah dilakukan
 df.info()
 ```
 ![image](https://user-images.githubusercontent.com/74480780/124797451-7530c000-df7c-11eb-8460-a483cf5fc4f8.png)
-Kini dataset memiliki 19 kolom/feature
+Kini dataset memiliki 19 kolom
 ### 3. Data Analysis
-Melihat korelasi atau hubungan tiap kolom/feature pada dataset
+Melihat korelasi atau hubungan tiap kolom pada dataset
 ```
-# melihat korelasi/hubungan tiap data antar kolom/feature
+# melihat korelasi/hubungan tiap data antar feature
 df.corr()
 ```
 ![image](https://user-images.githubusercontent.com/74480780/124797820-e96b6380-df7c-11eb-80c3-2912285909af.png)
@@ -702,7 +701,7 @@ Menganalisa karakteristik data dengan fungsi head(), info(), describe(), shape, 
    ```
    ![image](https://user-images.githubusercontent.com/74480780/110506005-496a0e80-8131-11eb-8d15-2500c8ff8db1.png)
    
-10. Melihat jumlah data pada data feature yang akan diprediksi (target/label)
+10. Melihat jumlah data pada data yang akan diprediksi (target/label)
     ```
     train['stroke'].value_counts()
     ```
