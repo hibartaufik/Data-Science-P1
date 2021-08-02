@@ -441,7 +441,8 @@ Cek untuk melihat perubahan yang sudah dilakukan
 ```
 df.info()
 ```
-![image](https://user-images.githubusercontent.com/74480780/124797451-7530c000-df7c-11eb-8460-a483cf5fc4f8.png)
+![image](https://user-images.githubusercontent.com/74480780/127913832-164d33c1-339d-4aa5-8340-fe2aff324f99.png)
+
 Kini dataset memiliki 19 kolom
 ### 3. Data Analysis
 Melihat korelasi atau hubungan tiap kolom pada dataset
