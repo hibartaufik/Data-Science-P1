@@ -430,6 +430,13 @@ Kolom yang akan di drop yaitu **'Location ISO Code'**, **'City or Regency'**, **
 ```
 df.drop(['Location ISO Code', 'City or Regency', 'Country', 'Continent', 'Time Zone', 'Special Status', 'Total Cities', 'Total Districts', 'Total Regencies', 'Total Urban Villages', 'Total Rural Villages', 'Area (km2)', 'New Cases per Million', 'Total Cases per Million', 'New Deaths per Million', 'Total Deaths per Million', 'Growth Factor of New Cases', 'Growth Factor of New Deaths'], axis=1, inplace=True)
 ```
+
+- Ubah tipe data Date menjadi tipe data datetime agar menghindari kesalahan dalam pengurutan time-series untuk visualisasi
+
+```
+df['Date'] = pd.to_datetime(df['Date'], format="%m/%d/%Y")
+```
+
 Cek untuk melihat perubahan yang sudah dilakukan
 ```
 df.info()
@@ -571,6 +578,20 @@ plt.show()
 ```
 ![image](https://user-images.githubusercontent.com/74480780/124801311-e70b0880-df80-11eb-95ea-cce6ec413e6c.png)
 Visualisasi di atas menunjukkan bahwa DKI Jakarta unggul dalam angka kesembuhan per hari sebanyak 365.561, hampir dua kali lipat dari provinsi Jawa Barat yang menempati posisi kedua yaitu sebanyak 218.851.
+
+#### 3.5 Q5: Time Series Based Visualization in Big Picture
+Melihat peningkatan angka kasus baru, kematian, kesembuhan, dan kasus aktif dalam rentan waktu Maret 2020 - Maret 2021
+```
+data_plot = df.groupby('Date').agg({'New Cases':'sum', 'New Deaths':'sum', 'New Recovered':'sum', 'New Active Cases':'sum'})
+```
+```
+fg, ax = plt.subplots(figsize=(12, 6), dpi=800)
+plt.plot(data_plot)
+plt.title('Time Series Based Visualization (Maret 2020 - Maret 2021)', fontsize=18, fontweight='bold', pad=20)
+plt.show()
+```
+![q5picture](https://user-images.githubusercontent.com/74480780/127877423-adb6a0d6-2c17-4539-8829-bb6359b0ac06.png)
+
 
 ---
 ## Project 1: Stroke Prediction [Waroenk Skill Bootcamp Competition on Kaggle]
