@@ -521,7 +521,8 @@ plt.xlabel('Provinsi', fontsize=12, fontweight='bold')
 plt.ylabel('Jumlah Kasus', fontsize=12, fontweight='bold')
 plt.show()
 ```
-![image](https://user-images.githubusercontent.com/74480780/124800182-8cbd7800-df7f-11eb-8358-2e8f8266dec6.png)
+![a22picture](https://user-images.githubusercontent.com/74480780/127914641-df0c39c7-6c0e-4a41-8346-4a0f5ca1aa67.png)
+
 
 #### 3.3 Q3: Pulau mana saja yang memiliki kasus per hari terbanyak? 
 A3.1: Pulau dengan jumlah kasus per hari terbanyak
