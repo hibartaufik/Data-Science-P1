@@ -584,15 +584,19 @@ Visualisasi di atas menunjukkan bahwa DKI Jakarta unggul dalam angka kesembuhan 
 #### 3.5 Q5: Time Series Based Visualization in Big Picture
 Melihat peningkatan angka kasus baru, kematian, kesembuhan, dan kasus aktif dalam rentan waktu Maret 2020 - Maret 2021
 ```
-data_plot = df.groupby('Date').agg({'New Cases':'sum', 'New Deaths':'sum', 'New Recovered':'sum', 'New Active Cases':'sum'})
+fg, ax = plt.subplots(2, 2, figsize=(14, 6), dpi=800, sharex=True)
+fg.suptitle("Time Series based Visualization ('New Cases', 'New Deaths', 'New Recovered', 'New Active Cases')", fontsize=18, fontweight='bold')
+ax[0, 0].plot(df['Date'] ,df['New Cases'], label='New Cases', color='#0061A8')
+ax[0, 0].legend()
+ax[1, 0].plot(df['Date'] ,df['New Deaths'], label='New Deaths', color='#F55C47')
+ax[1, 0].legend()
+ax[0, 1].plot(df['Date'] ,df['New Recovered'], label='New Recovered', color='#4AA96C')
+ax[0, 1].legend()
+ax[1, 1].plot(df['Date'] ,df['New Active Cases'], label='New Active Cases', color='#F7A440')
+ax[1, 1].legend()
+plt.show();
 ```
-```
-fg, ax = plt.subplots(figsize=(12, 6), dpi=800)
-plt.plot(data_plot)
-plt.title('Time Series Based Visualization (Maret 2020 - Maret 2021)', fontsize=18, fontweight='bold', pad=20)
-plt.show()
-```
-![q5picture](https://user-images.githubusercontent.com/74480780/127877423-adb6a0d6-2c17-4539-8829-bb6359b0ac06.png)
+![q51picture](https://user-images.githubusercontent.com/74480780/127947183-4b622237-203c-4953-9662-33c877e52c6d.png)
 
 
 ---
