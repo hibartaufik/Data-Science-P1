@@ -2,9 +2,9 @@
 Data science portfolio
 
 ## [Project 3: Machine Learning - Heart Attack Possibility](https://github.com/hibartaufik/heart-attack-possibility)
-1. Membuat model Machine Learning dengan algoritma Decision Tree dengan bahasa Python
-2. Dataset berasal dari kaggle.com dengan nama 'Health care: Heart attack possibility Dataset' yang disusun oleh Naresh Bhat yang mengambil data dari UCI Machine Learning Repository
-3. Project menggunakan dataset berasal kaggle, disusun oleh Naresh Bhat. Dapat diakses [disini](https://www.kaggle.com/nareshbhat/health-care-data-set-on-heart-attack-possibility)
+1. Membuat model Machine Learning dengan algoritma Decision Tree
+2. Dataset berasal dari kaggle.com dengan nama 'Health care: Heart attack possibility Dataset', disusun oleh Naresh Bhat yang mengambil data dari UCI Machine Learning Repository
+3. Project menggunakan dataset berasal [kaggle.com](https://www.kaggle.com/), disusun oleh Naresh Bhat. Dapat diakses [disini](https://www.kaggle.com/nareshbhat/health-care-data-set-on-heart-attack-possibility)
 ![](/images/thumbnailP3_1.jpg)
 ![](/images/thumbnailP3_2.jpg)
 
