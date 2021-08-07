@@ -5,6 +5,8 @@ Data science portfolio
 1. Membuat model Machine Learning dengan algoritma Decision Tree dengan bahasa Python
 2. Dataset berasal dari kaggle.com dengan nama 'Health care: Heart attack possibility Dataset' yang disusun oleh Naresh Bhat yang mengambil data dari UCI Machine Learning Repository
 3. Project menggunakan dataset berasal kaggle, disusun oleh Naresh Bhat. Dapat diakses [disini](https://www.kaggle.com/nareshbhat/health-care-data-set-on-heart-attack-possibility)
+![](/images/thumbnailP3_1.jpg)
+![](/images/thumbnailP3_2.jpg)
 
 
 ## [Project 2: Machine Learning - New Cases Prediction](https://github.com/hibartaufik/New-Cases-Prediction)
