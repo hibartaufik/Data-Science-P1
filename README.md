@@ -3,7 +3,9 @@ Data science portfolio
 
 ## [Project 3: Machine Learning - Heart Attack Possibility](https://github.com/hibartaufik/heart-attack-possibility)
 ![](/images/tim-marshall-cAtzHUz7Z8g-unsplash.jpg)
-*Image by: Tim Marshall on Unsplash*
+*Photo by <a href="https://unsplash.com/@timmarshall?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Tim Marshall</a> on <a href="https://unsplash.com/s/photos/heart?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>*
+
+Overview:
 1. Membuat model Machine Learning dengan algoritma Decision Tree
 2. Dataset berasal dari kaggle.com dengan nama 'Health care: Heart attack possibility Dataset', disusun oleh Naresh Bhat yang mengambil data dari UCI Machine Learning Repository
 3. Project menggunakan dataset berasal [kaggle.com](https://www.kaggle.com/), disusun oleh Naresh Bhat. Dapat diakses [disini](https://www.kaggle.com/nareshbhat/health-care-data-set-on-heart-attack-possibility)
@@ -12,6 +14,9 @@ Data science portfolio
 
 
 ## [Project 2: Machine Learning - New Cases Prediction](https://github.com/hibartaufik/New-Cases-Prediction)
+![](images/cdc-k0KRNtqcjfw-unsplash.jpg)
+*Photo by <a href="https://unsplash.com/@cdc?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">CDC</a> on <a href="https://unsplash.com/s/photos/virus?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>*
+
 Overview:
 1. Membuat model machine learning menggunakan metode decision tree berdasarkan dataset yang berisi data COVID-19 di Indonesia
 2. Analysis dan Visualisasi yang lebih lengkap dapat dilihat di Project 1 dengan dataset yang sama, project ini lebih berfokus pada pemodelan machine learning
