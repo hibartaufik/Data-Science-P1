@@ -1,6 +1,7 @@
 # My Portfolio
-Data science portfolio
+Data Science Portfolio
 
+---
 ## [Project 4: Machine Learning - Water Potability](https://github.com/hibartaufik/water-potability)
 ![manu-schwendener-zFEY4DP4h6c-unsplash](https://user-images.githubusercontent.com/74480780/129901651-37ca0b7d-bf48-49c0-bd90-f97b11fc9377.jpg)
 
@@ -12,6 +13,7 @@ Overview:
 3. Dataset dapat diakses [disini](https://www.kaggle.com/adityakadiwal/water-potability)
 <img width="3569" alt="boxplot EDA (thumbnail)" src="https://user-images.githubusercontent.com/74480780/130573712-f0cecf17-ed6c-4c24-b68e-dc8e9f4257ef.png">
 
+---
 ## [Project 3: Machine Learning - Heart Attack Possibility](https://github.com/hibartaufik/heart-attack-possibility)
 ![](/images/tim-marshall-cAtzHUz7Z8g-unsplash.jpg)
 Photo by <a href="https://unsplash.com/@timmarshall?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Tim Marshall</a> on <a href="https://unsplash.com/s/photos/heart?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
@@ -23,7 +25,7 @@ Overview:
 ![](/images/thumbnailP3_1.jpg)
 ![](/images/thumbnailP3_2.jpg)
 
-
+---
 ## [Project 2: Machine Learning - New Cases Prediction](https://github.com/hibartaufik/New-Cases-Prediction)
 ![](images/cdc-k0KRNtqcjfw-unsplash.jpg)
 
