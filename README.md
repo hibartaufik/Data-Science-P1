@@ -1,7 +1,7 @@
 # My Portfolio
 Data Science Portfolio
 
-## [Project 4: Machine Learning - Water Potability](https://github.com/hibartaufik/water-potability)
+## [Project 4: Machine Learning - Water Potability](https://hibartaufik.github.io/water-potability/)
 ![manu-schwendener-zFEY4DP4h6c-unsplash](https://user-images.githubusercontent.com/74480780/129901651-37ca0b7d-bf48-49c0-bd90-f97b11fc9377.jpg)
 
 Photo by <a href="https://unsplash.com/@manuschwendener?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Manu Schwendener</a> on <a href="https://unsplash.com/s/photos/water-drink?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
