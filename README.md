@@ -38,6 +38,8 @@ Sudah dua tahun pandemi COVID-19 melanda dunia, termasuk Indonesia yang terkena 
 Project ini merupakan sebuah apresiasi terhadap Hendratno, penyusun dataset yang meluangkan waktunya untuk dapat mengumpulkan data dari berbagai sumber, karena selain bermanfaat bagi saya sebagai seorang pelajar yang ingin membangun portfolio data, juga bermanfaat untuk para expert-expert data disana yang dapat mengolah dataset ini menjadi sebuah manfaat untuk masyarakat luas nantinya terkait penanganan COVID-19. Project yang saya buat terbagi menjadi dua, penyusunan model Machine Learning dan Data Analysis.
 ![](/images/thumbnail.jpg)
 
+Untuk lebih dapat menganalisa data dan insight seputar COVID-19, dapat dilihat disini:
+
 ## [Project 1: Data Analysis - COVID-19 Indonesia Dataset](https://github.com/hibartaufik/Data-Analysis-Covid-in-Indonesia)
 
 ![](/images/q51picture.png)
